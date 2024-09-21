@@ -21,4 +21,4 @@ const appCheck = initializeAppCheck(app, {
   isTokenAutoRefreshEnabled: true
 });
 
-export { app, analytics, auth };
+export { appCheck, app, analytics, auth };
