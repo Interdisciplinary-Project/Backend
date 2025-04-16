@@ -33,14 +33,14 @@ namespace EscoteiroLMS.Domain.Entities
             DomainExceptionValidation.When(name.Length < 3, "Nome inválido, pois está muito curto. No mínimo 3 caracteres.");
             DomainExceptionValidation.When(name.Length > 50, "Nome inválido, pois está muito longo. No máximo 50 caracteres.");
             DomainExceptionValidation.When(string.IsNullOrEmpty(name), "Nome inválido, pois é necessário possuir um nome.");
-            DomainExceptionValidation.When(cpf.Length > 14, "O CPF informado ultrapassou o limite de caracteres permitido.");
+            DomainExceptionValidation.When(cpf.Length >= 15, "O CPF informado ultrapassou o limite de caracteres permitido.");
             DomainExceptionValidation.When(cpf.Length < 14, "O CPF informado não foi inserido corretamente.");
             DomainExceptionValidation.When(string.IsNullOrEmpty(phone), "Telefone inválido, pois é necessário possuir um telefone.");
             DomainExceptionValidation.When(phone.Length < 14, "O telefone informado não foi inserido corretamente.");
-            DomainExceptionValidation.When(phone.Length > 14, "O telefone informado ultrapassou o limite de caracteres permitido.");
+            DomainExceptionValidation.When(phone.Length >= 15, "O telefone informado ultrapassou o limite de caracteres permitido.");
             DomainExceptionValidation.When(string.IsNullOrEmpty(emergencyPhone), "Telefone de emergência inválido, pois é necessário possuir um telefone de emergência.");
             DomainExceptionValidation.When(emergencyPhone.Length < 14, "O telefone de emergência informado não foi inserido corretamente.");
-            DomainExceptionValidation.When(emergencyPhone.Length > 14, "O telefone de emergência informado ultrapassou o limite de caracteres permitido.");
+            DomainExceptionValidation.When(emergencyPhone.Length >= 15, "O telefone de emergência informado ultrapassou o limite de caracteres permitido.");
 
             Name = name;
             Cpf = cpf;
