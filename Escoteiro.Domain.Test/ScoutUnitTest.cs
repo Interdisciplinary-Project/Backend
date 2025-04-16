@@ -93,8 +93,8 @@ namespace Escoteiro.Domain.Test
             Action action = () => new Scout("Daniel Danoni", "488.999.999-99", dateOfBirth, "", "(16)99628-7391", 1);
             action.Should().Throw<DomainExceptionValidation>().WithMessage("Telefone inválido, pois é necessário possuir um telefone.");
         }
-        [Fact(DisplayName = "Scout With Invalid Phone")]
-        public void Scout_WithInvalidPhoneParameters_ResultException()
+        [Fact(DisplayName = "Scout With Short Phone")]
+        public void Scout_WithShortPhoneParameters_ResultException()
         {
             string dateString = "01062005";
             DateOnly dateOfBirth = DateOnly.ParseExact(dateString, "ddMMyyyy");
@@ -119,17 +119,17 @@ namespace Escoteiro.Domain.Test
             string dateString = "01062005";
             DateOnly dateOfBirth = DateOnly.ParseExact(dateString, "ddMMyyyy");
 
-            Action action = () => new Scout("Daniel Danoni", "488.999.999-99", dateOfBirth, "(16)99628-73910", "", 1);
-            action.Should().Throw<DomainExceptionValidation>().WithMessage("O telefone informado ultrapassou o limite de caracteres permitido.");
+            Action action = () => new Scout("Daniel Danoni", "488.999.999-99", dateOfBirth, "(16)99628-7391", "", 1);
+            action.Should().Throw<DomainExceptionValidation>().WithMessage("Telefone de emergência inválido, pois é necessário possuir um telefone de emergência.");
         }
-        [Fact(DisplayName = "Scout With Invalid Emergency Phone")]
-        public void Scout_WithInvalidEmergencyPhoneParameters_ResultException()
+        [Fact(DisplayName = "Scout With Short Emergency Phone")]
+        public void Scout_WithShortEmergengyPhoneParameters_ResultException()
         {
             string dateString = "01062005";
             DateOnly dateOfBirth = DateOnly.ParseExact(dateString, "ddMMyyyy");
 
             Action action = () => new Scout("Daniel Danoni", "488.999.999-99", dateOfBirth, "(16)99628-7391", "(16)99628-739", 1);
-            action.Should().Throw<DomainExceptionValidation>().WithMessage("O telefone informado ultrapassou o limite de caracteres permitido.");
+            action.Should().Throw<DomainExceptionValidation>().WithMessage("O telefone de emergência informado não foi inserido corretamente.");
         }
         [Fact(DisplayName = "Scout With Long Emergency Phone")]
         public void Scout_WithLongEmergencyPhoneParameters_ResultException()
@@ -138,7 +138,7 @@ namespace Escoteiro.Domain.Test
             DateOnly dateOfBirth = DateOnly.ParseExact(dateString, "ddMMyyyy");
 
             Action action = () => new Scout("Daniel Danoni", "488.999.999-99", dateOfBirth, "(16)99628-7391", "(16)99628-73910", 1);
-            action.Should().Throw<DomainExceptionValidation>().WithMessage("O telefone informado ultrapassou o limite de caracteres permitido.");
+            action.Should().Throw<DomainExceptionValidation>().WithMessage("O telefone de emergência informado ultrapassou o limite de caracteres permitido.");
         }
         [Fact(DisplayName = "Scout With Invalid Responsible Id")]
         public void Scout_WithInvalidResponsibleIdParameters_ResultException()
