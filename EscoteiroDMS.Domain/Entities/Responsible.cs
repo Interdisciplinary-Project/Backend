@@ -30,9 +30,9 @@ namespace EscoteiroLMS.Domain.Entities
 
         private void ValidateDomain(string name, string cpf, DateOnly birthDate, string phone, string emergencyPhone)
         {
+            DomainExceptionValidation.When(string.IsNullOrWhiteSpace(name), "Nome inválido, pois é necessário possuir um nome.");
             DomainExceptionValidation.When(name.Length < 3, "Nome inválido, pois está muito curto. No mínimo 3 caracteres.");
             DomainExceptionValidation.When(name.Length > 50, "Nome inválido, pois está muito longo. No máximo 50 caracteres.");
-            DomainExceptionValidation.When(string.IsNullOrEmpty(name), "Nome inválido, pois é necessário possuir um nome.");
             DomainExceptionValidation.When(cpf.Length >= 15, "O CPF informado ultrapassou o limite de caracteres permitido.");
             DomainExceptionValidation.When(cpf.Length < 14, "O CPF informado não foi inserido corretamente.");
             DomainExceptionValidation.When(string.IsNullOrEmpty(phone), "Telefone inválido, pois é necessário possuir um telefone.");

@@ -25,12 +25,12 @@ namespace EscoteiroLMS.Domain.Entities
 
         private void ValidateDomain(string name, string description)
         {
+            DomainExceptionValidation.When(string.IsNullOrEmpty(name), "Nome inválido, pois é necessário possuir um nome.");
             DomainExceptionValidation.When(name.Length < 3, "Nome inválido, pois está muito curto. No mínimo 3 caracteres.");
             DomainExceptionValidation.When(name.Length > 50, "Nome inválido, pois está muito longo. No máximo 50 caracteres.");
-            DomainExceptionValidation.When(string.IsNullOrEmpty(name), "Nome inválido, pois é necessário possuir um nome.");
-            DomainExceptionValidation.When(description.Length > 500, "Descrição inválida, pois está muito longo. No máximo 500 caracteres.");
-            DomainExceptionValidation.When(string.IsNullOrEmpty(description), "Descrição inválida, pois está muito longo. No máximo 500 caracteres.");
+            DomainExceptionValidation.When(string.IsNullOrEmpty(description), "Descrição inválida, pois é necessário possuir uma descrição");
             DomainExceptionValidation.When(description.Length < 20, "Descrição inválida, pois está muito curta. No mínimo 20 caracteres.");
+            DomainExceptionValidation.When(description.Length > 500, "Descrição inválida, pois está muito longo. No máximo 500 caracteres.");
 
             Name = name;
             Description = description;
