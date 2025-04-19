@@ -14,27 +14,27 @@ namespace EscoteiroLMS.Infra.Data.Repositories
             _branchContext = context;
         }
 
-        public async Task<Branch> Create(Branch branch)
+        public async Task<BranchDto> Create(BranchDto branch)
         {
             _branchContext.Add(branch);
             await _branchContext.SaveChangesAsync();
             return branch;
         }
 
-        public async Task<Branch> GetById(int? id)
+        public async Task<BranchDto> GetById(int? id)
         {
             var branch = await _branchContext.Branches.FindAsync(id);
             return branch;
         }
 
-        public async Task<Branch> Update(Branch branch)
+        public async Task<BranchDto> Update(BranchDto branch)
         {
             _branchContext.Update(branch);
             await _branchContext.SaveChangesAsync();
             return branch;
         }
 
-        public async Task<Branch> Remove(Branch branch)
+        public async Task<BranchDto> Remove(BranchDto branch)
         {
             _branchContext.Remove(branch);
             await _branchContext.SaveChangesAsync();

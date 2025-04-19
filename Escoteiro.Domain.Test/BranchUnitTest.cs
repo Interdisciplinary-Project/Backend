@@ -18,7 +18,7 @@ namespace Escoteiro.Domain.Test
             string dateString = "01062005";
             DateOnly dateOfBirth = DateOnly.ParseExact(dateString, "ddMMyyyy");
 
-            Action action = () => new Branch("Daniel Danoni", "O Ramo Escoteiro é voltado para jovens de 11 a 14 anos e tem como foco o desenvolvimento do caráter");
+            Action action = () => new BranchDto("Daniel Danoni", "O Ramo Escoteiro é voltado para jovens de 11 a 14 anos e tem como foco o desenvolvimento do caráter");
             action.Should().NotThrow();
         }
         #endregion
@@ -30,7 +30,7 @@ namespace Escoteiro.Domain.Test
         {
             string dateString = "01062005";
             DateOnly dateOfBirth = DateOnly.ParseExact(dateString, "ddMMyyyy");
-            Action action = () => new Branch(-1, "Daniel Danoni", "O Ramo Escoteiro é voltado para jovens de 11 a 14 anos e tem como foco o desenvolvimento do caráter");
+            Action action = () => new BranchDto(-1, "Daniel Danoni", "O Ramo Escoteiro é voltado para jovens de 11 a 14 anos e tem como foco o desenvolvimento do caráter");
             action.Should().Throw<DomainExceptionValidation>().WithMessage("Id inválido.");
         }
         [Fact(DisplayName = "Branch With Empty Name")]
@@ -39,7 +39,7 @@ namespace Escoteiro.Domain.Test
             string dateString = "01062005";
             DateOnly dateOfBirth = DateOnly.ParseExact(dateString, "ddMMyyyy");
 
-            Action action = () => new Branch("", "O Ramo Escoteiro é voltado para jovens de 11 a 14 anos e tem como foco o desenvolvimento do caráter");
+            Action action = () => new BranchDto("", "O Ramo Escoteiro é voltado para jovens de 11 a 14 anos e tem como foco o desenvolvimento do caráter");
             action.Should().Throw<DomainExceptionValidation>().WithMessage("Nome inválido, pois é necessário possuir um nome.");
         }
         [Fact(DisplayName = "Branch With Short Name")]
@@ -48,7 +48,7 @@ namespace Escoteiro.Domain.Test
             string dateString = "01062005";
             DateOnly dateOfBirth = DateOnly.ParseExact(dateString, "ddMMyyyy");
 
-            Action action = () => new Branch("Lo", "O Ramo Escoteiro é voltado para jovens de 11 a 14 anos e tem como foco o desenvolvimento do caráter");
+            Action action = () => new BranchDto("Lo", "O Ramo Escoteiro é voltado para jovens de 11 a 14 anos e tem como foco o desenvolvimento do caráter");
             action.Should().Throw<DomainExceptionValidation>().WithMessage("Nome inválido, pois está muito curto. No mínimo 3 caracteres.");
         }
         [Fact(DisplayName = "Branch with Long Name")]
@@ -57,7 +57,7 @@ namespace Escoteiro.Domain.Test
             string dateString = "01062005";
             DateOnly dateOfBirth = DateOnly.ParseExact(dateString, "ddMMyyyy");
 
-            Action action = () => new Branch("LobinhoLobinhoLobinhoLobinhoLobinhoLobinhoLobinhoLobinho", "");
+            Action action = () => new BranchDto("LobinhoLobinhoLobinhoLobinhoLobinhoLobinhoLobinhoLobinho", "");
             action.Should().Throw<DomainExceptionValidation>().WithMessage("Nome inválido, pois está muito longo. No máximo 50 caracteres.");
         }
 
@@ -67,7 +67,7 @@ namespace Escoteiro.Domain.Test
             string dateString = "01062005";
             DateOnly dateOfBirth = DateOnly.ParseExact(dateString, "ddMMyyyy");
 
-            Action action = () => new Branch("Lobinho", "");
+            Action action = () => new BranchDto("Lobinho", "");
             action.Should().Throw<DomainExceptionValidation>().WithMessage("Descrição inválida, pois é necessário possuir uma descrição");
         }
         [Fact(DisplayName = "Branch With Short Description")]
@@ -76,7 +76,7 @@ namespace Escoteiro.Domain.Test
             string dateString = "01062005";
             DateOnly dateOfBirth = DateOnly.ParseExact(dateString, "ddMMyyyy");
 
-            Action action = () => new Branch("Lobinho", "O Ramo Escoteiro");
+            Action action = () => new BranchDto("Lobinho", "O Ramo Escoteiro");
             action.Should().Throw<DomainExceptionValidation>().WithMessage("Descrição inválida, pois está muito curta. No mínimo 20 caracteres.");
         }
         [Fact(DisplayName = "Branch with Long Description")]
@@ -85,7 +85,7 @@ namespace Escoteiro.Domain.Test
             string dateString = "01062005";
             DateOnly dateOfBirth = DateOnly.ParseExact(dateString, "ddMMyyyy");
 
-            Action action = () => new Branch("Lobinho",
+            Action action = () => new BranchDto("Lobinho",
                 "Os Ramos Escoteiros é voltado para jovens de 11 a 14 anos e tem como foco o desenvolvimento do caráter, da cidadania e das habilidades de " +
                 "liderança por meio de atividades ao ar livre, jogos, acampamentos e projetos em equipe. Os escoteiros aprendem a trabalhar em patrulhas, a tomar decisões e a respeitar valores como lealdade, " +
                 "responsabilidade e amizade, seguindo sempre a Promessa e a Lei Escoteira." +

@@ -8,7 +8,7 @@ namespace EscoteiroLMS.Infra.Data.Context
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options) { }
         public DbSet<Responsible> Responsibles { get; set; }
         public DbSet<Scout> Scouts { get; set; }
-        public DbSet<Branch> Branches { get; set; }
+        public DbSet<BranchDto> Branches { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
