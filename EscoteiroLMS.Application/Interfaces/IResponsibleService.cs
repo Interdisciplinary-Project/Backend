@@ -1,10 +1,5 @@
 ﻿using EscoteiroLMS.Communication.Dto;
 using EscoteiroLMS.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EscoteiroLMS.Application.Interfaces
 {
@@ -12,8 +7,8 @@ namespace EscoteiroLMS.Application.Interfaces
     {
         Task<IEnumerable<ResponsibleDto>> GetResponsibles();
         Task<ResponsibleDto> GetById(int? id);
-        Task<Responsible> Create(Responsible responsibleDto);
-        Task<ResponsibleDto> Update(ResponsibleDto responsibleDto);
-        Task Remove(int id);
+        Task<ResponsibleDto> Create(ResponsibleDto responsibleDto);
+        Task Update(ResponsibleDto responsibleDto);
+        Task Remove(int? id);
     }
 }

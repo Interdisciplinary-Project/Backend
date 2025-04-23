@@ -11,8 +11,8 @@ namespace EscoteiroLMS.Application.Interfaces
     public interface IBranchService
     {
         Task<BranchDto> GetById(int? id);
-        Task<Branch> Create(Branch branchDto);
+        Task<BranchDto> Create(BranchDto branchDto);
         Task<BranchDto> Update(BranchDto branchDto);
-        Task Remove(int id);
+        Task Remove(int? id);
     }
 }

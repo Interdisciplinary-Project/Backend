@@ -13,20 +13,20 @@ namespace EscoteiroLMS.Application.Services
 {
     public class ResponsibleService : IResponsibleService
     {
-        private IResponsibleService _responsibleRepository;
-        private IMapper _mapper;
+        private readonly IResponsibleRepository _responsibleRepository;
+        private readonly IMapper _mapper;
 
-        public ResponsibleService(IResponsibleService responsibleRepository, IMapper mapper)
+        public ResponsibleService(IResponsibleRepository responsibleRepository, IMapper mapper)
         {
             _responsibleRepository = responsibleRepository;
-            this._mapper = mapper;
+            _mapper = mapper;
         }
 
-        public async Task<Responsible> Create(ResponsibleDto responsibleDto)
+        public async Task<ResponsibleDto> Create(ResponsibleDto responsibleDto)
         {
             var responsibleEntity = _mapper.Map<Responsible>(responsibleDto);
-            await _responsibleRepository.Create(responsibleEntity);
-            return responsibleEntity;
+            var result = await _responsibleRepository.Create(responsibleEntity);
+            return _mapper.Map<ResponsibleDto>(result);
         }
 
         public async Task<IEnumerable<ResponsibleDto>> GetResponsibles()
@@ -43,7 +43,7 @@ namespace EscoteiroLMS.Application.Services
 
         public async Task Remove(int? id)
         {
-            var responsibleEntity = _responsibleRepository.GetById(id).Result;
+            var responsibleEntity = await _responsibleRepository.GetById(id);
             await _responsibleRepository.Remove(responsibleEntity);
         }
 
