@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using EscoteiroLMS.Application.Interfaces;
-using EscoteiroLMS.Communication.Dto;
 using EscoteiroLMS.Domain.Entities;
 using EscoteiroLMS.Domain.Interfaces;
 
@@ -17,32 +16,31 @@ namespace EscoteiroLMS.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<BranchDto> Create(BranchDto branchDto)
+        public async Task<Branch> Create(Branch branch)
         {
-            var branchesEntity = _mapper.Map<Branch>(branchDto);
-            var result = await _branchRepository.Create(branchesEntity);
-            return _mapper.Map<BranchDto>(result);
+            var result = await _branchRepository.Create(branch);
+            return result;
         }
 
-        public async Task<BranchDto> GetById(int? id)
+        public async Task<Branch> GetById(int id)
+        {
+            return await _branchRepository.GetById(id);
+        }
+
+        public async Task<Branch> Update(Branch branch)
+        {
+            await _branchRepository.Update(branch);
+            return await _branchRepository.GetById(branch.Id.Value);
+        }
+
+        public async Task<Branch> Remove(int id)
         {
             var branchEntity = await _branchRepository.GetById(id);
-            return _mapper.Map<BranchDto>(branchEntity);
-        }
-
-        public async Task Remove(int? id)
-        {
-            var branchEntity = await _branchRepository.GetById(id);
-            await _branchRepository.Remove(branchEntity);
-        }
-
-        public async Task<BranchDto> Update(BranchDto branchDto)
-        {
-            var branchEntity = _mapper.Map<Branch>(branchDto);
-            await _branchRepository.Update(branchEntity);
-
-            var updatedEntity = await _branchRepository.GetById(branchEntity.Id);
-            return _mapper.Map<BranchDto>(updatedEntity);
+            if (branchEntity != null)
+            {
+                await _branchRepository.Remove(branchEntity);
+            }
+            return branchEntity;
         }
     }
 }

@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EscoteiroDMS.Domain\EscoteiroLMS.Domain.csproj" />
+    <ProjectReference Include="..\EscoteiroLMS.Communication\EscoteiroLMS.Communication.csproj" />
   </ItemGroup>
 
 </Project>

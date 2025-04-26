@@ -22,35 +22,36 @@ namespace EscoteiroLMS.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<ResponsibleDto> Create(ResponsibleDto responsibleDto)
+        public async Task<IEnumerable<Responsible>> GetResponsibles()
         {
-            var responsibleEntity = _mapper.Map<Responsible>(responsibleDto);
-            var result = await _responsibleRepository.Create(responsibleEntity);
-            return _mapper.Map<ResponsibleDto>(result);
+            return await _responsibleRepository.GetResponsibles();
         }
 
-        public async Task<IEnumerable<ResponsibleDto>> GetResponsibles()
+        public async Task<Responsible> Create(Responsible responsible)
         {
-            var responsiblesEntity = await _responsibleRepository.GetResponsibles();
-            return _mapper.Map<IEnumerable<ResponsibleDto>>(responsiblesEntity);
+            var result = await _responsibleRepository.Create(responsible);
+            return result;
         }
 
-        public async Task<ResponsibleDto> GetById(int? id)
+        public async Task<Responsible> GetById(int id)
+        {
+            return await _responsibleRepository.GetById(id);
+        }
+
+        public async Task<Responsible> Update(Responsible responsible)
+        {
+            await _responsibleRepository.Update(responsible);
+            return await _responsibleRepository.GetById(responsible.Id);
+        }
+
+        public async Task<Responsible> Remove(int id)
         {
             var responsibleEntity = await _responsibleRepository.GetById(id);
-            return _mapper.Map<ResponsibleDto>(responsibleEntity);
-        }
-
-        public async Task Remove(int? id)
-        {
-            var responsibleEntity = await _responsibleRepository.GetById(id);
-            await _responsibleRepository.Remove(responsibleEntity);
-        }
-
-        public async Task Update(ResponsibleDto responsibleDto)
-        {
-            var responsibleEntity = _mapper.Map<Responsible>(responsibleDto);
-            await _responsibleRepository.Update(responsibleEntity);
+            if (responsibleEntity != null)
+            {
+                await _responsibleRepository.Remove(responsibleEntity);
+            }
+            return responsibleEntity;
         }
     }
 }
