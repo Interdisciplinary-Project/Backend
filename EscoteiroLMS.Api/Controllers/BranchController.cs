@@ -3,10 +3,12 @@ using EscoteiroLMS.Application.Interfaces;
 using EscoteiroLMS.Application.Services;
 using EscoteiroLMS.Communication.Dto;
 using EscoteiroLMS.Domain.Entities;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EscoteiroLMS.Api.Controllers
 {
+    [EnableCors("AllowSpecificOrigins")]
     [ApiController]
     [Route("[controller]")]
     public class BranchController : ControllerBase
