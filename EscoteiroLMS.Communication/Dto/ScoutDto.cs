@@ -27,14 +27,14 @@ namespace EscoteiroLMS.Communication.Dto
         [Required(ErrorMessage = "O número de telefone é obrigatório.")]
         [MinLength(14)]
         [MaxLength(14)]
-        public string Phone { get; set; }
+        public string? Phone { get; set; }
 
         [Required(ErrorMessage = "O número de telefone de emergência é obrigatório.")]
         [MinLength(14)]
         [MaxLength(14)]
-        public string EmergencyPhone { get; set; }
+        public string? EmergencyPhone { get; set; }
 
-        public ResponsibleDto Responsible { get; set; }
-        public int ResponsibleDtoId { get; set; }
+        public int ResponsibleId { get; set; }
+        public AddressDto Address { get; set; } = default!;
     }
 }

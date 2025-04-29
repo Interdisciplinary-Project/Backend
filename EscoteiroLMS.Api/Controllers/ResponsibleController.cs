@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EscoteiroLMS.Api.Controllers
 {
-    [EnableCors("AllowSpecificOrigins")]
     [ApiController]
     [Route("[controller]")]
     public class ResponsibleController : ControllerBase

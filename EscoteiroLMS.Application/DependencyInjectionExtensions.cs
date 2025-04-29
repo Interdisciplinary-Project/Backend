@@ -20,7 +20,7 @@ namespace EscoteiroLMS.Application
 
         private static void AddAutoMapper(IServiceCollection services)
         {
-            //services.AddAutoMapper(typeof();
+            services.AddAutoMapper(typeof(AutoMapping));
             
         }
     }

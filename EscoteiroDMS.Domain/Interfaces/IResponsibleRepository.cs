@@ -8,6 +8,6 @@ namespace EscoteiroLMS.Domain.Interfaces
         Task<Responsible> GetById(int id);
         Task<Responsible> Create(Responsible responsible);
         Task<Responsible> Update(Responsible responsible);
-        Task Remove(Responsible responsible);
+        Task<Responsible> Remove(Responsible responsible);
     }
 }

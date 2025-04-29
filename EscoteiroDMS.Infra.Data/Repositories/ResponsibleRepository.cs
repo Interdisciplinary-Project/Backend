@@ -1,10 +1,11 @@
 ﻿using EscoteiroLMS.Domain.Entities;
+using EscoteiroLMS.Domain.Interfaces;
 using EscoteiroLMS.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace EscoteiroLMS.Infra.Data.Repositories
 {
-    public class ResponsibleRepository
+    public class ResponsibleRepository : IResponsibleRepository
     {
         private ApplicationDBContext _responsibleContext;
 
@@ -20,7 +21,7 @@ namespace EscoteiroLMS.Infra.Data.Repositories
             return responsible;
         }
 
-        public async Task<Responsible> GetById(int? id)
+        public async Task<Responsible> GetById(int id)
         {
             var responsible = await _responsibleContext.Responsibles.FindAsync(id);
             return responsible;

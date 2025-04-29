@@ -1,4 +1,5 @@
 using EscoteiroLMS.Application;
+using EscoteiroLMS.Infra.Ioc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,17 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddApplication();
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowSpecificOrigins", policy =>
-    {
-        policy
-        .WithOrigins("http://127.0.0.1:5500")
-        .AllowAnyHeader()
-        .AllowAnyMethod()
-        .AllowCredentials();
-    });
-});
+builder.Services.AddDependencyInjection();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
