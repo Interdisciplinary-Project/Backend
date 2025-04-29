@@ -14,8 +14,12 @@ namespace EscoteiroLMS.Infra.Data.EntityConfiguration
             builder.Property(r => r.BirthDate);
             builder.Property(r => r.Phone);
             builder.Property(r => r.EmergencyPhone);
-            builder.Property(r => r.Address);
-            builder.Property(r => r.Scout);
+            builder.ComplexProperty(
+             property => property.Address,
+             complexPropertyBuilder => {
+                 complexPropertyBuilder.IsRequired();
+             }
+             );
         }
     }
 }

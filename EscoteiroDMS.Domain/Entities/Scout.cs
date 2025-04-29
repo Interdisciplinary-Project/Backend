@@ -1,6 +1,7 @@
 ﻿using EscoteiroLMS.Domain.Validation;
 using EscoteiroLMS.Domain.ValueObjects;
 using System.Net;
+using System.Runtime.CompilerServices;
 
 namespace EscoteiroLMS.Domain.Entities
 {
@@ -15,6 +16,8 @@ namespace EscoteiroLMS.Domain.Entities
         public Address Address { get; set; } = default!;
         public Responsible Responsible { get; set; } = default!;
         public int ResponsibleId { get; set; }
+
+        private Scout() { }
 
         public Scout(string name, string cpf, DateOnly birthdate, string phone, string emergencyphone, int responsibleid)
         {

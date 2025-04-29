@@ -14,6 +14,8 @@ namespace EscoteiroLMS.Domain.ValueObjects
         public States State { get; set; }
         public string Complement { get; set; } = string.Empty;
 
+        private Address() { }
+
         public Address(string zipcode, string street, string neighborhood, string city, string complement, int number)
         {
             ValidateDomain(zipcode, street, neighborhood, city, complement, number);

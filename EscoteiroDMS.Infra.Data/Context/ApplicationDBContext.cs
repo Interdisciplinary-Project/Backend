@@ -1,5 +1,4 @@
-﻿using EscoteiroLMS.Communication.Dto;
-using EscoteiroLMS.Domain.Entities;
+﻿using EscoteiroLMS.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace EscoteiroLMS.Infra.Data.Context

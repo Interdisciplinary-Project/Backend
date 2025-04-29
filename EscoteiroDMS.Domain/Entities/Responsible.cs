@@ -16,6 +16,8 @@ namespace EscoteiroLMS.Domain.Entities
         public Address Address { get; set; } = default!;
         public List<Scout> Scout { get; set; } = default!;
 
+        private Responsible() { }
+
         public Responsible(string name, string cpf, DateOnly birthDate, string phone, string emergencyPhone)
         {
             ValidateDomain(name, cpf, birthDate, phone, emergencyPhone);

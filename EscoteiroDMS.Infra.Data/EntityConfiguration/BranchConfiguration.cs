@@ -1,7 +1,6 @@
 ﻿using EscoteiroLMS.Domain.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using EscoteiroLMS.Communication.Dto;
 
 namespace EscoteiroLMS.Infra.Data.EntityConfiguration
 {

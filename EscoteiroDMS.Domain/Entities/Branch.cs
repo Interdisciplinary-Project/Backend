@@ -9,6 +9,8 @@ namespace EscoteiroLMS.Domain.Entities
         public string Name { get; set; }
         public string Description { get; set; }
 
+        private Branch() { }
+
         public Branch(string name, string description)
         {
             ValidateDomain(name, description);
