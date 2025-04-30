@@ -22,7 +22,6 @@ namespace EscoteiroLMS.Api.Controllers
         }
 
         [HttpGet(Name = "GetScouts")]
-        [ResponseCache(CacheProfileName = "Default30")]
         public async Task<ActionResult<IEnumerable<ScoutDto>>> Get()
         {
             var scouts = await _scoutService.GetScout();

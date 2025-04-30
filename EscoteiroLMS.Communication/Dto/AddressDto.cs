@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EscoteiroLMS.Communication.Dto
+﻿namespace EscoteiroLMS.Communication.Dto
 {
     public class AddressDto
     {
@@ -47,5 +41,5 @@ namespace EscoteiroLMS.Communication.Dto
         SE = 25, // Sergipe
         TO = 26  // Tocantins
     }
-    }
 }
+

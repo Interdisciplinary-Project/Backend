@@ -1,25 +1,22 @@
-﻿using AutoMapper;
-using EscoteiroLMS.Application.Interfaces;
+﻿using EscoteiroLMS.Application.Interfaces;
 using EscoteiroLMS.Domain.Entities;
 using EscoteiroLMS.Domain.Interfaces;
+using System.Threading.Tasks;
 
 namespace EscoteiroLMS.Application.Services
 {
     public class BranchService : IBranchService
     {
         private readonly IBranchRepository _branchRepository;
-        private readonly IMapper _mapper;
 
-        public BranchService(IBranchRepository branchRepository, IMapper mapper)
+        public BranchService(IBranchRepository branchRepository)
         {
             _branchRepository = branchRepository;
-            _mapper = mapper;
         }
 
         public async Task<Branch> Create(Branch branch)
         {
-            var result = await _branchRepository.Create(branch);
-            return result;
+            return await _branchRepository.Create(branch);
         }
 
         public async Task<Branch> GetById(int id)
@@ -27,20 +24,24 @@ namespace EscoteiroLMS.Application.Services
             return await _branchRepository.GetById(id);
         }
 
-        public async Task<Branch> Update(Branch branch)
+        public async Task<IEnumerable<Branch>> GetBranches()
         {
-            await _branchRepository.Update(branch);
-            return await _branchRepository.GetById(branch.Id.Value);
+            return await _branchRepository.GetBranches();
         }
 
         public async Task<Branch> Remove(int id)
         {
-            var branchEntity = await _branchRepository.GetById(id);
-            if (branchEntity != null)
+            var branch = await _branchRepository.GetById(id);
+            if (branch != null)
             {
-                await _branchRepository.Remove(branchEntity);
+                await _branchRepository.Remove(branch);
             }
-            return branchEntity;
+            return branch;
+        }
+
+        public async Task<Branch> Update(Branch branch)
+        {
+            return await _branchRepository.Update(branch);
         }
     }
 }

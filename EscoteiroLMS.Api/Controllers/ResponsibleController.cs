@@ -21,7 +21,6 @@ namespace EscoteiroLMS.Api.Controllers
         }
 
         [HttpGet(Name = "GetResponsibles")]
-        [ResponseCache(CacheProfileName = "Default30")]
         public async Task<ActionResult<IEnumerable<ResponsibleDto>>> Get()
         {
             var responsibles = await _responsibleService.GetResponsibles();

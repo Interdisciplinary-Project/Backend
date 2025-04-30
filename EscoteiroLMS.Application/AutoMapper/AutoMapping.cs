@@ -8,7 +8,8 @@ namespace EscoteiroLMS.Application.AutoMapper
     {
         public AutoMapping()
         {
-            CreateMap<Responsible, ResponsibleDto>().ForMember(dest => dest, config => config.Ignore()).ReverseMap();
+            CreateMap<Responsible, ResponsibleDto>().ReverseMap();
+            CreateMap<Branch, BranchDto>().ReverseMap();
         }
 
     }

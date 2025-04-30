@@ -4,6 +4,7 @@ namespace EscoteiroLMS.Domain.Interfaces
 {
     public interface IBranchRepository
     {
+        Task<IEnumerable<Branch>> GetBranches();
         Task<Branch> GetById(int id);
         Task<Branch> Create(Branch branch);
         Task<Branch> Update(Branch branch);

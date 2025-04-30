@@ -1,11 +1,10 @@
 ﻿using EscoteiroLMS.Domain.Validation;
-using System.Numerics;
 
 namespace EscoteiroLMS.Domain.Entities
 {
     public class Branch
     {
-        public int? Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
 
@@ -14,7 +13,6 @@ namespace EscoteiroLMS.Domain.Entities
         public Branch(string name, string description)
         {
             ValidateDomain(name, description);
-
         }
 
         public Branch(int id, string name, string description)
@@ -22,7 +20,6 @@ namespace EscoteiroLMS.Domain.Entities
             DomainExceptionValidation.When(id < 0, "Id inválido.");
             Id = id;
             ValidateDomain(name, description);
-
         }
 
         private void ValidateDomain(string name, string description)

@@ -14,7 +14,7 @@ namespace EscoteiroLMS.Domain.Entities
         public string? Phone { get; set; }
         public string? EmergencyPhone { get; set; }
         public Address Address { get; set; } = default!;
-        public List<Scout> Scout { get; set; } = default!;
+        //public List<Scout> Scout { get; set; } = default!;
 
         private Responsible() { }
 

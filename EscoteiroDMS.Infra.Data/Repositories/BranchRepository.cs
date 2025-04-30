@@ -21,9 +21,15 @@ namespace EscoteiroLMS.Infra.Data.Repositories
             return branch;
         }
 
+        public async Task<IEnumerable<Branch>> GetBranches()
+        {
+            return await _branchContext.Branches.OrderBy(r => r.Id).ToListAsync();
+        }
+
         public async Task<Branch> Create(Branch branch)
         {
-            _branchContext.Add(branch);
+            branch.Id = 0;
+            _branchContext.Branches.Add(branch);
             await _branchContext.SaveChangesAsync();
             return branch;
         }
