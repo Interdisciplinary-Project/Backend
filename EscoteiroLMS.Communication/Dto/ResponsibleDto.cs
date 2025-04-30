@@ -36,7 +36,7 @@ namespace EscoteiroLMS.Communication.Dto
 
         public AddressDto Address { get; set; }
 
-        public List<ScoutDto> Scout { get; set; }
+        //public List<ScoutDto> Scout { get; set; }
         public int ScoutDtoId { get; set; }
     }
 }

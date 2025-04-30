@@ -1,10 +1,11 @@
 ﻿using EscoteiroLMS.Domain.Entities;
+using EscoteiroLMS.Domain.Interfaces;
 using EscoteiroLMS.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace EscoteiroLMS.Infra.Data.Repositories
 {
-    public class ScoutRepository
+    public class ScoutRepository : IScoutRepository
     {
         private ApplicationDBContext _scoutContext;
 

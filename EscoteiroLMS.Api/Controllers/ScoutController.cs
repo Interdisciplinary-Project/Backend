@@ -51,12 +51,13 @@ namespace EscoteiroLMS.Api.Controllers
                 return BadRequest("Invalid Data");
             }
 
+            scoutDto.Id = 0;
+
             var scoutEntity = _mapper.Map<Scout>(scoutDto);
             var scout = await _scoutService.Create(scoutEntity);
             var createdDto = _mapper.Map<ScoutDto>(scout);
 
-            return new CreatedAtRouteResult("GetScoutById",
-                new { id = scout.Id }, createdDto);
+            return Ok(createdDto);
         }
         [HttpPut(Name = "UpdateScout")]
         public async Task<ActionResult> Put(int id, [FromBody] ScoutDto scoutDto)
@@ -66,6 +67,7 @@ namespace EscoteiroLMS.Api.Controllers
                 return BadRequest("Update Invalid Data");
             }
 
+            scoutDto.Id = id;
             var scoutEntity = _mapper.Map<Scout>(scoutDto);
             await _scoutService.Update(scoutEntity);
             return Ok(scoutDto);

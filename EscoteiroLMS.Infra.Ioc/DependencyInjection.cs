@@ -18,6 +18,8 @@ namespace EscoteiroLMS.Infra.Ioc
             services.AddScoped<IResponsibleRepository, ResponsibleRepository>();
             services.AddScoped<IBranchRepository, BranchRepository>();
             services.AddScoped<IResponsibleService, ResponsibleService>();
+            services.AddScoped<IScoutService, ScoutService>();
+            services.AddScoped<IScoutRepository, ScoutRepository>();
         }
     }
 }

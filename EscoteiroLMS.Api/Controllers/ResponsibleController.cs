@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using EscoteiroLMS.Application.Interfaces;
+using EscoteiroLMS.Application.Services;
 using EscoteiroLMS.Communication.Dto;
 using EscoteiroLMS.Domain.Entities;
 using Microsoft.AspNetCore.Cors;
@@ -50,11 +51,13 @@ namespace EscoteiroLMS.Api.Controllers
                 return BadRequest("Invalid Data");
             }
 
+            responsibleDto.Id = 0;
+
             var responsibleEntity = _mapper.Map<Responsible>(responsibleDto);
             var responsible = await _responsibleService.Create(responsibleEntity);
             var createdDto = _mapper.Map<ResponsibleDto>(responsible);
 
-            return new CreatedAtRouteResult("GetResponsible", new { id = responsible.Id }, createdDto);
+            return Ok(createdDto);
         }
 
         [HttpPut(Name = "UpdateResponsible")]
@@ -65,6 +68,7 @@ namespace EscoteiroLMS.Api.Controllers
                 return BadRequest("Update Invalid Data");
             }
 
+            responsibleDto.Id = id;
             var responsibleEntity = _mapper.Map<Responsible>(responsibleDto);
             await _responsibleService.Update(responsibleEntity);
             return Ok(responsibleDto);
