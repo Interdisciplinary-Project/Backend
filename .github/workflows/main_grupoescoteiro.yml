@@ -67,9 +67,10 @@ jobs:
       # Run dotnet build and publish
       - name: dotnet build and publish
         run: |
-          dotnet restore
-          dotnet build --configuration Release
-          dotnet publish -c Release -o './dist' 
+          dir
+          dotnet restore ./Backend
+          dotnet build ./Backend --configuration Release
+          dotnet publish ./Backend -c Release -o './dist' 
           
       # Deploy to Azure Web apps
       - name: 'Run Azure webapp deploy action using publish profile credentials'
